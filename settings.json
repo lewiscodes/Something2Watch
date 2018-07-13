@@ -1,0 +1,7 @@
+{
+    "api": {
+        "key": "8407048c",
+        "documentation": "http://www.omdbapi.com/",
+        "exampleUrl": "http://www.omdbapi.com/?i=tt3896198&apikey=8407048c"
+    }
+}
