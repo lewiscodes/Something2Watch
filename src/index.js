@@ -8,8 +8,8 @@ import promise from 'redux-promise';
 import thunk from 'redux-thunk';
 import registerServiceWorker from './registerServiceWorker';
 
-import welcome from './containers/welcome';
-import anotherContainer from './containers/anotherContainer';
+import homepage from './pages/homepage'
+import anotherPage from './pages/anotherPage'
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const createStoreWithMiddleware = createStore(reducers, composeEnhancers(
@@ -20,8 +20,8 @@ ReactDOM.render(
     <Provider store={createStoreWithMiddleware}>
       <Router>
         <div>
-          <Route exact path='/' component={welcome} />
-          <Route exact path='/test' component={anotherContainer} />
+          <Route exact path='/' component={homepage} />
+          <Route exact path='/test' component={anotherPage} />
         </div>
       </Router>
     </Provider>
