@@ -9,10 +9,18 @@ export default function(state = INITIAL_STATE, action) {
     case RECEIVE_BASE_SHOW_SEARCH_RESULTS:
       return {...state, searchResults: action.payload}
     case RECEIVE_BASE_SHOW_EXTRA_SEARCH_RESULTS:
-      return {...state, searchResultsExtra: state.searchResultsExtra.concat(action.payload)}
+      let newArray = state.searchResultsExtra.concat(action.payload)
+      newArray.sort(compare);
+      return {...state, searchResultsExtra: newArray}
     case RESET_SEARCH:
       return {...state, searchResults: INITIAL_STATE.searchResults, searchResultsExtra: INITIAL_STATE.searchResultsExtra}
     default:
       return state;
   }
+}
+
+function compare(a, b) {
+  if (isNaN(parseInt(a.imdbVotes))) {a.imdbVotes = 0}
+  if (isNaN(parseInt(b.imdbVotes))) {b.imdbVotes = 0}
+  return parseInt(a.imdbVotes) > parseInt(b.imdbVotes) ? -1 : 1;
 }
