@@ -7,6 +7,7 @@ import reducers from './reducers';
 import promise from 'redux-promise';
 import thunk from 'redux-thunk';
 import registerServiceWorker from './registerServiceWorker';
+import {StyleRoot} from 'radium';
 
 import findShow from './pages/findShow'
 
@@ -18,9 +19,11 @@ const createStoreWithMiddleware = createStore(reducers, composeEnhancers(
 ReactDOM.render(
   <Provider store={createStoreWithMiddleware}>
     <Router>
-      <div>
-        <Route exact path='/' component={findShow} />
-      </div>
+      <StyleRoot>
+        <div>
+          <Route exact path='/' component={findShow} />
+        </div>
+      </StyleRoot>
     </Router>
   </Provider>
 , document.getElementById('root'));

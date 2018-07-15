@@ -1,16 +1,15 @@
-import React from 'react'
+import React from 'react';
+import Radium from 'radium';
+import styles from '../styles/card';
 
-export default (props) => {
-  const defaultSyles = {
-      fontSize: '16px',
-      color: 'blue'
-  }
-
-  const style = Object.assign(defaultSyles, props.styles)
+export default Radium((props) => {
+  
+  // console.log('styles', styles);
+  // const style = Object.assign(defaultSyles, props.styles)
 
   return (
-    <div>
-      <h3>{props.Title}</h3>
+    <div style={styles.card}>
+      <h3 style={styles.title}>{props.Title}</h3>
       <img src={props.Poster}/>
       <p>{props.Actors}</p>
       <p>{props.Genre}</p>
@@ -20,4 +19,4 @@ export default (props) => {
       <p>{props.totalSeasons}</p>
     </div>
   );
-}
+})

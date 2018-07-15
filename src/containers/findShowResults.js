@@ -3,13 +3,18 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import Title from '../components/title';
-import Card from '../components/card'
+import Card from '../components/card';
+import CardScroller from '../components/cardScroller';
 
 class FindShowResults extends Component {
   renderResults() {
-    return this.props.resultsExtra.map((result) => {
-      return <Card {...result} key={result.imdbID}/>
-    });
+    return (
+      <CardScroller>
+        {this.props.resultsExtra.map((result) => {
+          return <Card {...result} key={result.imdbID}/>
+        })}
+      </CardScroller>
+    );
   }
 
   render() {
