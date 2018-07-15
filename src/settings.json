@@ -1,0 +1,10 @@
+{
+    "api": {
+        "documentation": "http://www.omdbapi.com/",
+        "key": "8407048c",
+        "baseRequestUrl": "http://www.omdbapi.com/?apikey=8407048c",
+        "searchByTitle": "&s=",
+        "searchForTvShow": "&type=series",
+        "searchByImdbId": "&i="
+    }
+}

@@ -1,12 +1,13 @@
+import settings from '../settings.json'
 import { SET_NUMBER } from '../actions/meta';
 
-const INITIAL_STATE = { number: 0 };
+const INITIAL_STATE = { api: settings.api };
 
 export default function(state = INITIAL_STATE, action) {
-    switch(action.type) {
-        case SET_NUMBER:
-            return {...state, number: action.payload}
-        default:
-            return state;
-    }
+  switch(action.type) {
+    case SET_NUMBER:
+      return {...state, number: action.payload}
+    default:
+      return state;
+  }
 }
