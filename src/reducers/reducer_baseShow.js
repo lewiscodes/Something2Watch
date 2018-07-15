@@ -20,7 +20,7 @@ export default function(state = INITIAL_STATE, action) {
 }
 
 function compare(a, b) {
-  if (isNaN(parseInt(a.imdbVotes))) {a.imdbVotes = 0}
-  if (isNaN(parseInt(b.imdbVotes))) {b.imdbVotes = 0}
-  return parseInt(a.imdbVotes) > parseInt(b.imdbVotes) ? -1 : 1;
+  if (isNaN(parseInt(a.imdbVotes, 10))) {a.imdbVotes = 0}
+  if (isNaN(parseInt(b.imdbVotes, 10))) {b.imdbVotes = 0}
+  return parseInt(a.imdbVotes, 10) > parseInt(b.imdbVotes, 10) ? -1 : 1;
 }
