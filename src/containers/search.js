@@ -34,6 +34,7 @@ class Search extends Component {
     if (e.key === 'Enter') {
       this.props.setSearchString(this.state.searchString)
       this._handleSearch()
+      // document.getElementsByClassName('dummyDiv')[0].scrollIntoView({ behavior: "smooth" })
     }
   }
 

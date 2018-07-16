@@ -7,11 +7,22 @@ import Card from '../components/card';
 import CardScroller from '../components/cardScroller';
 
 class FindShowResults extends Component {
+
+  componentDidUpdate() {
+    // if (this.props.resultsExtra.length > this.state.cardsAdded) {
+    //   this.setState({ cardsAdded: this.props.resultsExtra.length })
+    // }
+
+    // if (this.state.cardsAdded === this.props.resultsExtra.length) {
+    //   document.getElementById('card_tt1856010').scrollIntoView({ behavior: "smooth" })
+    // }    
+  }
+
   renderResults() {
     return (
       <CardScroller>
         {this.props.resultsExtra.map((result) => {
-          return <Card {...result} key={result.imdbID}/>
+          return <Card {...result} key={result.imdbID} />
         })}
       </CardScroller>
     );
