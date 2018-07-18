@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
+import { setBaseShow } from '../actions/baseShow'
+
 import Title from '../components/title';
 import Card from '../components/card';
 import CardScroller from '../components/cardScroller';
@@ -18,11 +20,22 @@ class FindShowResults extends Component {
     // }    
   }
 
+  handleCardClick(selectedShowId) {
+    this.props.setBaseShow(selectedShowId)
+    window.location.pathname = "/results"
+  }
+
   renderResults() {
     return (
       <CardScroller>
         {this.props.resultsExtra.map((result) => {
-          return <Card {...result} key={result.imdbID} />
+          return (
+            <Card 
+              show={{...result}}
+              key={result.imdbID}
+              handleClick={(selectedShowId) => {this.handleCardClick(selectedShowId)}}
+            />
+          )
         })}
       </CardScroller>
     );
@@ -51,7 +64,7 @@ class FindShowResults extends Component {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ }, dispatch)
+  return bindActionCreators({ setBaseShow }, dispatch)
 }
 
 function mapStateToProps(state) {

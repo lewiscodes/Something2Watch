@@ -3,6 +3,14 @@ export const SEARCH_BASE_SHOW = "SEARCH_BASE_SHOW";
 export const RECEIVE_BASE_SHOW_SEARCH_RESULTS = "RECEIVE_BASE_SHOW_SEARCH_RESULTS";
 export const RECEIVE_BASE_SHOW_EXTRA_SEARCH_RESULTS = "RECEIVE_BASE_SHOW_EXTRA_SEARCH_RESULTS";
 export const RESET_SEARCH = "RESET_SEARCH";
+export const SET_BASE_SHOW = "SET_BASE_SHOW";
+
+export function setBaseShow(baseShow) {
+  return {
+    type: SET_BASE_SHOW,
+    payload: baseShow
+  }
+}
 
 export function resetSearch() {
   return {type: RESET_SEARCH}
