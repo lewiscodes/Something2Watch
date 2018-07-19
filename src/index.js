@@ -9,6 +9,7 @@ import thunk from 'redux-thunk';
 import registerServiceWorker from './registerServiceWorker';
 import {StyleRoot} from 'radium';
 
+import homepage from './pages/homepage'
 import findShow from './pages/findShow'
 import results from './pages/results'
 
@@ -22,7 +23,8 @@ ReactDOM.render(
     <Router>
       <StyleRoot>
         <Switch>
-          <Route exact path='/' component={findShow} />
+          <Route exact path='/' component={homepage} />
+          <Route path='/search' component={findShow} />
           <Route path='/results' component={results} />
         </Switch>
       </StyleRoot>

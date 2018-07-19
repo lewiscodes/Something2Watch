@@ -42,31 +42,8 @@ const styles = {
     margin: '10px 0 10px',
     fontSize: ''
   },
-  '@media (min-width: 641px)' : {
-    card: {
-      maxWidth: '400px'
-    }, cardHeader: {
-    },title: {
-    }, poster: {
-    }, actors: {
-    }, genre: {
-    }, year: {
-    }, imdbRating: {
-    }, seasons: {
-    }
-  },
-  '@media (min-width: 1025px)': {
-    card: {
-    }, cardHeader: {
-    }, title: {
-    }, poster: {
-    }, actors: {
-    }, genre: {
-    }, year: {
-    }, imdbRating: {
-    }, seasons: {
-    }
-  }
+  '@media (min-width: 641px)' : {},
+  '@media (min-width: 1025px)': {}
 }
 
 export default styles

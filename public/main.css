@@ -1,9 +1,19 @@
+@font-face {
+  font-family: FalseNine;
+  src: url("./FalseNine.otf") format("opentype");
+}
+
 * {
-  font-family: 'Raleway';
+  font-family: 'Muli';
+}
+
+.falseNineFont {
+  font-family: 'FalseNine';
 }
 
 body {
-  /* background: #e2e1e0 */
+  background: #141414;
+  color: #e5e5e5;
 }
 
 h1 {

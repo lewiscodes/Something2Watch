@@ -5,8 +5,8 @@ const styles = {
     flexWrap: 'nowrap',
     overflowX: 'auto',
   },
-  '@media (min-width: 641px)' : {cardScroller: {}},
-  '@media (min-width: 1025px)': {cardScroller: {}}
+  '@media (min-width: 641px)' : {},
+  '@media (min-width: 1025px)': {}
 }
 
 export default styles

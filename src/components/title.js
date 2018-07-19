@@ -1,15 +1,15 @@
 import React from 'react'
+import Radium from 'radium';
+import styles from '../styles/title';
 
-export default (props) => {
-
-  const defaultSyles = {
-      fontSize: '16px',
-      color: 'blue'
+export default Radium((props) => {
+  if (props.header) {
+    return (
+      <h1 style={styles.title.header} className={"falseNineFont"}>{props.text}</h1>
+    );
   }
 
-  const style = Object.assign(defaultSyles, props.styles)
-
   return (
-    <h1 style={style} >{props.text}</h1>
+    <h2 style={styles.title.standard} >{props.text}</h2>
   );
-}
+})
