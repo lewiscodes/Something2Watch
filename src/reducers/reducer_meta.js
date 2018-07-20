@@ -1,12 +1,12 @@
 import settings from '../settings.json'
-import { SET_NUMBER } from '../actions/meta';
+import { SET_SEARCH_TYPE } from '../actions/meta';
 
-const INITIAL_STATE = { api: settings.api };
+const INITIAL_STATE = { api: settings.api, searchType: '' };
 
 export default function(state = INITIAL_STATE, action) {
   switch(action.type) {
-    case SET_NUMBER:
-      return {...state, number: action.payload}
+    case SET_SEARCH_TYPE:
+      return {...state, searchType: action.payload}
     default:
       return state;
   }

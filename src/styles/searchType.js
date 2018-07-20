@@ -16,7 +16,6 @@ const styles = {
     textDecoration: 'underline',
     whiteSpace: 'nowrap'
   },
-  
   '@media (min-width: 1025px)': {}
 }
 

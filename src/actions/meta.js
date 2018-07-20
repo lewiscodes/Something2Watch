@@ -1,8 +1,8 @@
-export const SET_NUMBER = "SET_NUMBER";
+export const SET_SEARCH_TYPE = "SET_SEARCH_TYPE";
 
-export function setNumber() {
+export function setSearchType(searchType) {
   return {
-    type: SET_NUMBER,
-    payload: 1
-  };
+    type: SET_SEARCH_TYPE,
+    payload: searchType
+  }
 }

@@ -23,9 +23,9 @@ class Search extends Component {
 
   _handleSearch = () => {
     this.props.resetSearch();
-
-    const { baseRequestUrl, searchByTitle, searchForTvShow, searchByImdbId } = this.props.api;
-    const searchUrl = `${baseRequestUrl}${searchByTitle}${this.state.searchString}${searchForTvShow}`
+    const { baseRequestUrl, searchByTitle, searchForTvShow, searchForFilm, searchByImdbId } = this.props.api;
+    const searchType = this.props.searchType === 'Film' ? searchForFilm : searchForTvShow;
+    const searchUrl = `${baseRequestUrl}${searchByTitle}${this.state.searchString}${searchType}`
     const extraInfoUrl = `${baseRequestUrl}${searchByImdbId}`
     this.props.searchForBaseShow(searchUrl, extraInfoUrl)
   }
@@ -39,13 +39,14 @@ class Search extends Component {
   }
 
   render() {
+    const searchType = this.props.searchType === 'Film' ? 'Film' : 'Tv Show';
     return (
       <div>
         <Title text={'Search!'} styles={titleStyles}/>
         <SearchBar
           onChange={this._handleSearchChange}
           onKeyPress={this._handleSearchKeyPress}
-          placeholder={"Search for a TV Show you have seen."}
+          placeholder={`Search for a ${searchType} you have seen.`}
         />
       </div>
     );
@@ -57,7 +58,7 @@ function mapDispatchToProps(dispatch) {
 }
 
 function mapStateToProps(state) {
-  return { api: state.meta.api }
+  return { api: state.meta.api, searchType: state.meta.searchType }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Search);

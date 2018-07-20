@@ -5,6 +5,7 @@
         "baseRequestUrl": "http://www.omdbapi.com/?apikey=8407048c",
         "searchByTitle": "&s=",
         "searchForTvShow": "&type=series",
+        "searchForFilm": "&type=movie",
         "searchByImdbId": "&i="
     }
 }
