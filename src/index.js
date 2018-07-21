@@ -1,17 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { Router, browserHistory } from 'react-router';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, compose } from 'redux';
 import reducers from './reducers';
 import promise from 'redux-promise';
 import thunk from 'redux-thunk';
 import registerServiceWorker from './registerServiceWorker';
-import {StyleRoot} from 'radium';
-
-import homepage from './pages/homepage'
-import findShow from './pages/findShow'
-import results from './pages/results'
+import { StyleRoot } from 'radium'
+import routes from './routes.js'
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const createStoreWithMiddleware = createStore(reducers, composeEnhancers(
@@ -20,15 +17,9 @@ const createStoreWithMiddleware = createStore(reducers, composeEnhancers(
 
 ReactDOM.render(
   <Provider store={createStoreWithMiddleware}>
-    <Router>
-      <StyleRoot>
-        <Switch>
-          <Route exact path='/' component={homepage} />
-          <Route path='/search' component={findShow} />
-          <Route path='/results' component={results} />
-        </Switch>
-      </StyleRoot>
-    </Router>
+    <StyleRoot>
+      <Router history={browserHistory} routes={routes} />
+    </StyleRoot>
   </Provider>
 , document.getElementById('root'));
 registerServiceWorker();

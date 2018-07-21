@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import Radium from 'radium';
 
 import { setSearchType } from '../actions/meta'
@@ -11,7 +11,6 @@ import styles from '../styles/searchType'
 class SearchType extends Component {
   onLinkClick = (searchType) => {
     this.props.setSearchType(searchType)
-    window.location.pathname = "/search"
   }
 
   render() {

@@ -22,7 +22,6 @@ class FindShowResults extends Component {
 
   handleCardClick(selectedShowId) {
     this.props.setBaseShow(selectedShowId)
-    window.location.pathname = "/results"
   }
 
   renderResults() {
