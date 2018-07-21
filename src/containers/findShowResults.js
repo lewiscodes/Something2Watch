@@ -9,17 +9,6 @@ import Card from '../components/card';
 import CardScroller from '../components/cardScroller';
 
 class FindShowResults extends Component {
-
-  componentDidUpdate() {
-    // if (this.props.resultsExtra.length > this.state.cardsAdded) {
-    //   this.setState({ cardsAdded: this.props.resultsExtra.length })
-    // }
-
-    // if (this.state.cardsAdded === this.props.resultsExtra.length) {
-    //   document.getElementById('card_tt1856010').scrollIntoView({ behavior: "smooth" })
-    // }    
-  }
-
   handleCardClick(selectedShowId) {
     this.props.setBaseShow(selectedShowId)
   }
@@ -44,14 +33,6 @@ class FindShowResults extends Component {
     if (this.props.results.Response === 'True') {
       return (
         this.renderResults()
-      );
-    }
-
-    if (this.props.results.Response === 'False') {
-      return (
-        <div>
-          <Title text={'No Results!'} />
-        </div>
       );
     }
 

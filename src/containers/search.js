@@ -33,12 +33,12 @@ class Search extends Component {
       e.preventDefault()
       this.props.setSearchString(this.state.searchString)
       this._handleSearch()
-      // document.getElementsByClassName('dummyDiv')[0].scrollIntoView({ behavior: "smooth" })
     }
   }
 
   render() {
     const searchType = this.props.searchType === 'Film' ? 'Film' : 'Tv Show';
+    const placeholder = this.props.results.Response === 'False' ? 'No results found.' : `Search for a ${searchType} you have seen.`
     return (
       <div>
         <Title text={'Something2Watch'} header={true}/>
@@ -46,7 +46,8 @@ class Search extends Component {
           styles={styles}
           onChange={this._handleSearchChange}
           onKeyPress={this._handleSearchKeyPress}
-          placeholder={`Search for a ${searchType} you have seen.`}
+          placeholder={placeholder}
+          error={this.props.results.Response === 'False'}
         />
       </div>
     );
@@ -58,7 +59,7 @@ function mapDispatchToProps(dispatch) {
 }
 
 function mapStateToProps(state) {
-  return { api: state.meta.api, searchType: state.meta.searchType }
+  return { api: state.meta.api, searchType: state.meta.searchType, results: state.baseShow.searchResults }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Search);

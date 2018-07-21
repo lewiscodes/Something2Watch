@@ -20,6 +20,7 @@ export default (props) => {
           placeholder={"Search"}
           label={props.placeholder}
           fullWidth={true}
+          error={props.error}
         />
       </MuiThemeProvider>
     </div>
