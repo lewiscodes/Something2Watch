@@ -43,10 +43,7 @@ class FindShowResults extends Component {
   render() {
     if (this.props.results.Response === 'True') {
       return (
-        <div>
-          <Title text={'Results!'} />
-          {this.renderResults()}
-        </div>
+        this.renderResults()
       );
     }
 

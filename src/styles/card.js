@@ -1,11 +1,14 @@
 const styles = {
   card: {
-    background: '#fff',
+    background: '#FAFAFA',
     width: '75%',
     padding: '0px 10px',
     margin: '15px 0 15px 15px',
     flex: '0 0 auto',
-    boxShadow: '0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22)'
+    boxShadow: '0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22)',
+    '@media (min-width: 641px)' : {
+      width: 'auto'
+    }
   },
   cardHeader: {
     display: 'flex',
@@ -21,7 +24,10 @@ const styles = {
     maxWidth: '90%',
     maxHeight: '400px',
     display: 'block',
-    margin: 'auto'
+    margin: 'auto',
+    '@media (min-width: 641px)' : {
+      maxHeight: 'none',
+    },
   },
   extraInfo: {
     textAlign: 'center',

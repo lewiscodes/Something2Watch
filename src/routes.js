@@ -1,5 +1,4 @@
 import React from 'react';
-import {StyleRoot} from 'radium';
 import { Route, IndexRoute } from 'react-router';
 
 import App from './app'

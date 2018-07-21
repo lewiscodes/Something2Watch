@@ -4,12 +4,10 @@ import { bindActionCreators } from 'redux';
 
 import { setSearchString, searchForBaseShow, resetSearch } from '../actions/baseShow';
 
+import styles from '../styles/search'
+
 import SearchBar from '../components/searchbar';
 import Title from '../components/title';
-
-const titleStyles = {
-  fontSize: '24px'
-};
 
 class Search extends Component {
   constructor (props) {
@@ -32,6 +30,7 @@ class Search extends Component {
 
   _handleSearchKeyPress = (e) => {
     if (e.key === 'Enter') {
+      e.preventDefault()
       this.props.setSearchString(this.state.searchString)
       this._handleSearch()
       // document.getElementsByClassName('dummyDiv')[0].scrollIntoView({ behavior: "smooth" })
@@ -42,8 +41,9 @@ class Search extends Component {
     const searchType = this.props.searchType === 'Film' ? 'Film' : 'Tv Show';
     return (
       <div>
-        <Title text={'Search!'} styles={titleStyles}/>
+        <Title text={'Something2Watch'} header={true}/>
         <SearchBar
+          styles={styles}
           onChange={this._handleSearchChange}
           onKeyPress={this._handleSearchKeyPress}
           placeholder={`Search for a ${searchType} you have seen.`}

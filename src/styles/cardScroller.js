@@ -4,6 +4,7 @@ const styles = {
     display: 'flex',
     flexWrap: 'nowrap',
     overflowX: 'auto',
+    marginTop: '12px'
   },
   '@media (min-width: 641px)' : {},
   '@media (min-width: 1025px)': {}
