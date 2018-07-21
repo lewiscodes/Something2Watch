@@ -1,6 +1,6 @@
 import { SET_SEARCH_STRING, RECEIVE_BASE_SHOW_SEARCH_RESULTS, RECEIVE_BASE_SHOW_EXTRA_SEARCH_RESULTS, RESET_SEARCH, SET_BASE_SHOW } from '../actions/baseShow';
 
-const INITIAL_STATE = { searchString:'', searchResults: {}, searchResultsExtra: [], selectedBaseShow: {} };
+const INITIAL_STATE = { searchString:'', searchResults: {}, searchResultsExtra: [] };
 
 export default function(state = INITIAL_STATE, action) {
   switch(action.type) {
