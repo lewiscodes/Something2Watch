@@ -15,16 +15,7 @@ export default function(state = INITIAL_STATE, action) {
     case RESET_SEARCH:
       return {...state, searchResults: INITIAL_STATE.searchResults, searchResultsExtra: INITIAL_STATE.searchResultsExtra}
     case SET_BASE_SHOW:
-      let setBaseShowArray = state.searchResultsExtra;
-      for (let x=0; x<setBaseShowArray.length; x++) {
-        if (setBaseShowArray[x].imdbID === action.payload) {
-          setBaseShowArray[x].selected = true
-        } else {
-          setBaseShowArray[x].selected = false
-        }
-      }
-      return {...state, searchResultsExtra: setBaseShowArray}
-      // return {...state, selectedBaseShow: action.payload}
+      return {...state, baseShowImdbId: action.payload}
     default:
       return state;
   }
