@@ -1,6 +1,6 @@
-import { SET_SEARCH_STRING, RECEIVE_BASE_SHOW_SEARCH_RESULTS, RECEIVE_BASE_SHOW_EXTRA_SEARCH_RESULTS, RESET_SEARCH, SET_BASE_SHOW } from '../actions/baseShow';
+import { SET_SEARCH_STRING, RECEIVE_BASE_SHOW_SEARCH_RESULTS, RECEIVE_BASE_SHOW_EXTRA_SEARCH_RESULTS, RESET_SEARCH, SET_BASE_SHOW, RECEIVE_BASE_SHOW_RESULTS_API_ID } from '../actions/baseShow';
 
-const INITIAL_STATE = { searchString:'', searchResults: {}, searchResultsExtra: [], baseShowImdbId: null };
+const INITIAL_STATE = { searchString:'', searchResults: {}, searchResultsExtra: [], baseShowImdbId: null, baseShowResultsApiId: null };
 
 export default function(state = INITIAL_STATE, action) {
   switch(action.type) {
@@ -16,6 +16,8 @@ export default function(state = INITIAL_STATE, action) {
       return {...state, searchResults: INITIAL_STATE.searchResults, searchResultsExtra: INITIAL_STATE.searchResultsExtra}
     case SET_BASE_SHOW:
       return {...state, baseShowImdbId: action.payload}
+    case RECEIVE_BASE_SHOW_RESULTS_API_ID:
+      return {...state, baseShowResultsApiId: action.payload}
     default:
       return state;
   }

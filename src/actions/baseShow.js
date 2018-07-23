@@ -4,6 +4,8 @@ export const RECEIVE_BASE_SHOW_SEARCH_RESULTS = "RECEIVE_BASE_SHOW_SEARCH_RESULT
 export const RECEIVE_BASE_SHOW_EXTRA_SEARCH_RESULTS = "RECEIVE_BASE_SHOW_EXTRA_SEARCH_RESULTS";
 export const RESET_SEARCH = "RESET_SEARCH";
 export const SET_BASE_SHOW = "SET_BASE_SHOW";
+export const GET_BASE_SHOW_RESULTS_API_ID = "GET_RESULTS_API_ID";
+export const RECEIVE_BASE_SHOW_RESULTS_API_ID = "RECEIVE_BASE_SHOW_RESULTS_API_ID";
 
 export function setBaseShow(baseShow) {
   return {
@@ -52,5 +54,25 @@ function getExtraInfo(queryString) {
         payload: result
       });
     }));
+  }
+}
+
+export function getResultsApiId(searchString, searchType) {
+  return dispatch => {
+    dispatch({type: GET_BASE_SHOW_RESULTS_API_ID});
+
+    return window.fetch(searchString).then(response => response.json()).then((results) => {
+      if (searchType === 'Tv') {
+        dispatch({
+          type: RECEIVE_BASE_SHOW_RESULTS_API_ID,
+          payload: results.tv_results[0].id
+        })
+      } else {
+        dispatch({
+          type: RECEIVE_BASE_SHOW_RESULTS_API_ID,
+          payload: results.movie_results[0].id
+        })
+      }
+    });
   }
 }
