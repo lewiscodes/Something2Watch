@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux';
 import { withRouter } from 'react-router';
 
 import { getGenres } from '../actions/meta'
-import { getResultsApiId } from '../actions/baseShow'
+import { getResultsApiId, getBaseShowGenres } from '../actions/baseShow'
 import { getResults } from '../actions/results'
 
 import CircularProgress from '@material-ui/core/CircularProgress';
@@ -62,7 +62,11 @@ class Search extends Component {
   }
 
   getSelectedShowDataFromResultsApi() {
-    console.log('this is happening now!!!');
+    const {baseShowResultsApiId} = this.props;
+    const { baseRequestUrl, key } = this.props.meta.resultsApi;
+    const searchType = this.props.meta.searchType === 'Tv' ? 'tv' : 'movie';
+    const selectedShowDataFromResultsApiQuery = `${baseRequestUrl}${searchType}/${baseShowResultsApiId}${key}`;
+    this.props.getBaseShowGenres(selectedShowDataFromResultsApiQuery);
   }
 
   getResults() {
@@ -93,7 +97,7 @@ class Search extends Component {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ getResults, getGenres, getResultsApiId }, dispatch)
+  return bindActionCreators({ getResults, getGenres, getResultsApiId, getBaseShowGenres }, dispatch)
 }
 
 function mapStateToProps(state) {

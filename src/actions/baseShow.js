@@ -6,6 +6,8 @@ export const RESET_SEARCH = "RESET_SEARCH";
 export const SET_BASE_SHOW = "SET_BASE_SHOW";
 export const GET_BASE_SHOW_RESULTS_API_ID = "GET_RESULTS_API_ID";
 export const RECEIVE_BASE_SHOW_RESULTS_API_ID = "RECEIVE_BASE_SHOW_RESULTS_API_ID";
+export const GET_BASE_SHOW_GENRES_FROM_RESULTS_API = "GET_BASE_SHOW_GENRES_FROM_RESULTS_API";
+export const RECEIVE_BASE_SHOW_GENRES_FROM_RESULTS_API = "RECEIVE_BASE_SHOW_GENRES_FROM_RESULTS_API";
 
 export function setBaseShow(baseShow) {
   return {
@@ -73,6 +75,19 @@ export function getResultsApiId(searchString, searchType) {
           payload: results.movie_results[0].id
         })
       }
+    });
+  }
+}
+
+export function getBaseShowGenres(searchString) {
+  return dispatch => {
+    dispatch({type: GET_BASE_SHOW_GENRES_FROM_RESULTS_API});
+
+    return window.fetch(searchString).then(response => response.json()).then((results) => {
+      dispatch({
+        type: RECEIVE_BASE_SHOW_GENRES_FROM_RESULTS_API,
+        payload: results.genres
+      });
     });
   }
 }
