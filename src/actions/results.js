@@ -6,12 +6,10 @@ export function getResults(searchString) {
     dispatch({type: SEARCH_RESULTS});
 
     return window.fetch(searchString).then(response => response.json()).then((results) => {
-      if (results.Response === 'True') {
-        dispatch({
-          type: RECEIVE_RESULTS,
-          payload: results
-        });
-      }
+      dispatch({
+        type: RECEIVE_RESULTS,
+        payload: results
+      });
     });
   }
 }

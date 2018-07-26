@@ -27,22 +27,24 @@ class Search extends Component {
     this.getSelectedShowResultsApiId()
   }
 
-  componentDidMount() {
-    // getResults()
-  }
-
   componentDidUpdate() {
-    if (this.props.results) {
+    if (this.props.basicResults !== {} && !this.state.resultsLoaded) {
       this.setState({resultsLoaded: true})
     }
 
-    if (this.props.baseShowResultsApiId !== null) {
+    if (this.props.baseShow.baseShowResultsApiId !== null && !this.props.baseShow.gotBaseShowGenres) {
       this.getSelectedShowDataFromResultsApi();
+    }
+
+    if (this.props.baseShow.baseShowResultsApiGenres !== null && Object.keys(this.props.basicResults).length === 0) {
+      // make sure to add a flag in redux and yest it here
+      // so that this is only called once (like in the function above)
+      this.getResults();
     }
   }
 
   redirectIfNeeded() {
-    if (this.props.baseShowImdbId === null) {
+    if (this.props.baseShow.baseShowImdbId === null) {
       this.props.router.push('/')
     }
   }
@@ -55,14 +57,14 @@ class Search extends Component {
   }
 
   getSelectedShowResultsApiId() {
-    const { baseShowImdbId } = this.props
+    const { baseShowImdbId } = this.props.baseShow
     const { baseRequestUrl, key } = this.props.meta.resultsApi
     const selectedShowResultsApiIdUrl = `${baseRequestUrl}find/${baseShowImdbId}${key}&external_source=imdb_id`;
     this.props.getResultsApiId(selectedShowResultsApiIdUrl, this.props.meta.searchType);
   }
 
   getSelectedShowDataFromResultsApi() {
-    const {baseShowResultsApiId} = this.props;
+    const {baseShowResultsApiId} = this.props.baseShow;
     const { baseRequestUrl, key } = this.props.meta.resultsApi;
     const searchType = this.props.meta.searchType === 'Tv' ? 'tv' : 'movie';
     const selectedShowDataFromResultsApiQuery = `${baseRequestUrl}${searchType}/${baseShowResultsApiId}${key}`;
@@ -70,8 +72,25 @@ class Search extends Component {
   }
 
   getResults() {
-    // build query string here
-    // this.props.getResults('')
+    if (this.props.baseShow.baseShowResultsApiGenres && this.props.meta.genres) {
+      const includeGenres = this.getGenreIDs(this.props.baseShow.baseShowResultsApiGenres);
+      const { baseRequestUrl, key } = this.props.meta.resultsApi;
+      const searchType = this.props.meta.searchType === 'Tv' ? 'tv' : 'movie';
+      const resultsApiUrl = `${baseRequestUrl}discover/${searchType}${key}&with_genres=${includeGenres}`
+      this.props.getResults(resultsApiUrl)
+    }
+  }
+
+  getGenreIDs(genreObject) {
+    if (genreObject) {
+      let id = '';
+      genreObject.map((genre) => {
+        id = `${genre.id},${id}`
+        return true;
+      });
+      id = id.substring(0, id.length - 1);
+      return id;
+    }
   }
 
   renderResults() {
@@ -101,7 +120,11 @@ function mapDispatchToProps(dispatch) {
 }
 
 function mapStateToProps(state) {
-  return { meta: state.meta, results: state.results.results, baseShowImdbId: state.baseShow.baseShowImdbId, baseShowResultsApiId: state.baseShow.baseShowResultsApiId }
+  return {
+    meta: state.meta,
+    basicResults: state.results.basicResults,
+    baseShow: state.baseShow
+  }
 }
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Search));
