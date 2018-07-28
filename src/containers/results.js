@@ -7,6 +7,8 @@ import { getResults } from '../actions/results';
 
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Title from '../components/title';
+import CardScroller from '../components/cardScroller';
+import Card from '../components/card';
 
 import styles from '../styles/results';
 
@@ -23,7 +25,19 @@ class Search extends Component {
   };
 
   renderResults() {
-    return null;
+    return (
+      <CardScroller>
+        {this.props.results.map((result) => {
+          return (
+            <Card
+              show={{...result}}
+              key={result.imdbID}
+              handleClick={(selectedShowId) => {this.handleCardClick(selectedShowId)}}
+            />
+          )
+        })}
+      </CardScroller>
+    );
   };
 
   renderSpinner() {
@@ -38,7 +52,7 @@ class Search extends Component {
     return (
       <div>
         <Title text={'Something2Watch'} header={true}/>
-        {this.renderSpinner()}
+        {this.props.results ? this.renderResults() : this.renderSpinner()}
       </div>
     );
   };
@@ -51,7 +65,8 @@ function mapDispatchToProps(dispatch) {
 function mapStateToProps(state) {
   return {
     meta: state.meta,
-    baseShow: state.baseShow
+    baseShow: state.baseShow,
+    results: state.results.fullResults
   };
 };
 

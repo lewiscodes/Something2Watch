@@ -1,7 +1,7 @@
 import { getResultIDs } from '../helpers';
-import { RECEIVED_INITIAL_RESULTS } from '../actions/results';
+import { RECEIVED_INITIAL_RESULTS, RECEIVED_RESULTS_IMDB_IDS, RECEIVED_FULL_RESULTS } from '../actions/results';
 
-const INITIAL_STATE = { basicResults: {} , basicResultsImdbId: null};
+const INITIAL_STATE = { basicResults: null , basicResultsImdbIds: null, fullResults: null};
 
 export default function(state = INITIAL_STATE, action) {
   switch(action.type) {
@@ -11,6 +11,10 @@ export default function(state = INITIAL_STATE, action) {
         page: action.payload.page,
         resultIDs: getResultIDs(action.payload.results)
       }};
+    case RECEIVED_RESULTS_IMDB_IDS:
+      return {...state, basicResultsImdbIds: action.payload};
+    case RECEIVED_FULL_RESULTS:
+      return {...state, fullResults: action.payload}
     default:
       return state;
   }
