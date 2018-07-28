@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 import grey from "@material-ui/core/colors/grey";
@@ -25,4 +25,4 @@ export default (props) => {
       </MuiThemeProvider>
     </div>
   );
-}
+};

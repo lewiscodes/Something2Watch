@@ -7,8 +7,8 @@ import reducers from './reducers';
 import promise from 'redux-promise';
 import thunk from 'redux-thunk';
 import registerServiceWorker from './registerServiceWorker';
-import { StyleRoot } from 'radium'
-import routes from './routes.js'
+import { StyleRoot } from 'radium';
+import routes from './routes.js';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const createStoreWithMiddleware = createStore(reducers, composeEnhancers(

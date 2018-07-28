@@ -4,14 +4,14 @@ import { bindActionCreators } from 'redux';
 import { Link } from 'react-router';
 import Radium from 'radium';
 
-import { setSearchType } from '../actions/meta'
+import { setSearchType } from '../actions/meta';
 import Title from '../components/title';
-import styles from '../styles/searchType'
+import styles from '../styles/searchType';
 
 class SearchType extends Component {
   onLinkClick = (searchType) => {
-    this.props.setSearchType(searchType)
-  }
+    this.props.setSearchType(searchType);
+  };
 
   render() {
     return (
@@ -20,16 +20,16 @@ class SearchType extends Component {
         <p style={styles.mainTextStyles}>Do you want to watch a <Link to={'/search'} onClick={() => {this.onLinkClick('Film')}} style={styles.overrideTextStyles} className={'falseNineFont'}>Film</Link> or a <Link to={'/search'} onClick={() => {this.onLinkClick('Tv')}} style={styles.overrideTextStyles} className={'falseNineFont'}>TV Show</Link> ?</p>
       </div>
     );
-  }
-}
+  };
+};
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ setSearchType }, dispatch)
-}
+  return bindActionCreators({ setSearchType }, dispatch);
+};
 
 function mapStateToProps(state) {
-  return { }
-}
+  return { };
+};
 
-SearchType = Radium(SearchType)
+SearchType = Radium(SearchType);
 export default connect(mapStateToProps, mapDispatchToProps)(SearchType);

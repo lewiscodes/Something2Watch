@@ -17,6 +17,6 @@ const styles = {
     whiteSpace: 'nowrap'
   },
   '@media (min-width: 1025px)': {}
-}
+};
 
-export default styles
+export default styles;

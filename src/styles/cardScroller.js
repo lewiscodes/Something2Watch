@@ -8,6 +8,6 @@ const styles = {
   },
   '@media (min-width: 641px)' : {},
   '@media (min-width: 1025px)': {}
-}
+};
 
-export default styles
+export default styles;

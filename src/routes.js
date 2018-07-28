@@ -1,10 +1,10 @@
 import React from 'react';
 import { Route, IndexRoute } from 'react-router';
 
-import App from './app'
-import homepage from './pages/homepage'
-import findShow from './pages/findShow'
-import results from './pages/results'
+import App from './app';
+import homepage from './pages/homepage';
+import findShow from './pages/findShow';
+import results from './pages/results';
 
 export default (
     <Route path="/" component={App} >

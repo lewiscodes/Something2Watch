@@ -1,15 +1,16 @@
 import React from 'react';
 import Radium from 'radium';
-import LinesEllipsis from 'react-lines-ellipsis'
+import LinesEllipsis from 'react-lines-ellipsis';
 import styles from '../styles/card';
 
 export default Radium((props) => {
   let year = props.show.Year;
+
   if (year.length > 5) {
     year = `(${year})`;
   } else {
     year = `(${year}present)`;
-  }
+  };
   
   return (
     <div style={styles.card} id={`card_${props.show.imdbID}`} onClick={() => {props.handleClick(props.show.imdbID)}} >
@@ -26,4 +27,4 @@ export default Radium((props) => {
       </div>
     </div>
   );
-})
+});

@@ -1,7 +1,7 @@
 import React from 'react';
 
-import Search from '../containers/search'
-import FindShowResults from '../containers/findShowResults'
+import Search from '../containers/search';
+import FindShowResults from '../containers/findShowResults';
 
 const FindShow = () => {
   return (
@@ -10,6 +10,6 @@ const FindShow = () => {
       <FindShowResults />
     </div>
   )
-}
+};
 
-export default FindShow
+export default FindShow;

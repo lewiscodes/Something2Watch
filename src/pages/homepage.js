@@ -1,6 +1,6 @@
 import React from 'react';
 
-import SearchType from '../containers/searchType'
+import SearchType from '../containers/searchType';
 
 const Homepage = () => {
   return (
@@ -8,6 +8,6 @@ const Homepage = () => {
       <SearchType />
     </div>
   )
-}
+};
 
-export default Homepage
+export default Homepage;
