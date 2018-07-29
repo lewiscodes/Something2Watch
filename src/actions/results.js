@@ -115,13 +115,18 @@ function getResultsImdbIds(api, searchType, basicResults) {
   let resultsArray = [];
 
   return new Promise(function(resolve) {
+    let errors = 0;
     for (let x = 0; x < resultIds.length; x++) {
       const resultsImdbIdApiUrl = `${baseRequestUrl}${selectedSearchType}/${resultIds[x]}/external_ids${key}`;
       // eslint-disable-next-line
       window.fetch(resultsImdbIdApiUrl).then(response => response.json()).then((response) => {
-        resultsArray = resultsArray.concat(response.imdb_id);
+        if (response.imdb_id === null) {
+          errors++;
+        } else {
+          resultsArray = resultsArray.concat(response.imdb_id);
+        }
   
-        if (resultsArray.length === resultIds.length) {
+        if ((resultsArray.length + errors) === resultIds.length) {
           return resolve(resultsArray);
         };
       });
