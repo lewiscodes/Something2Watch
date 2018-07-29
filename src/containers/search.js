@@ -33,6 +33,7 @@ class Search extends Component {
       e.preventDefault();
       this.props.setSearchString(this.state.searchString);
       this._handleSearch();
+      e.target.blur();
     };
   };
 
