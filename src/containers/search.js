@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { withRouter } from 'react-router';
 
 import { setSearchString, searchForBaseShow, resetSearch } from '../actions/baseShow';
 
@@ -13,6 +14,16 @@ class Search extends Component {
   constructor (props) {
     super(props);
     this.state = { searchString: '' };
+  };
+  
+  componentDidMount() {
+    this.redirectIfNeeded()
+  }
+
+  redirectIfNeeded() {
+    if (this.props.searchType === '') {
+      this.props.router.push('/');
+    };
   };
 
   _handleSearchChange = (e) => {
@@ -64,4 +75,4 @@ function mapStateToProps(state) {
   return { api: state.meta.api, searchType: state.meta.searchType, results: state.baseShow.searchResults };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Search);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Search));
