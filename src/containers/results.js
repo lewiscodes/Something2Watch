@@ -9,10 +9,21 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import Title from '../components/title';
 import CardScroller from '../components/cardScroller';
 import Card from '../components/card';
+import Dialog from '../components/dialog';
 
 import styles from '../styles/results';
 
 class Search extends Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      dialogOpen: false,
+      dialogTitle: null,
+      dialogCopy: null
+    }
+  }
+
   componentDidMount() {
     this.redirectIfNeeded();
     this.props.getResults(this.props.meta, this.props.baseShow);
@@ -24,15 +35,33 @@ class Search extends Component {
     };
   };
 
+  dialogClose() {
+    this.setState({dialogOpen: false});
+  }
+
+  selectCard(imdbId) {
+    const result = this.props.results.filter((result) => {
+      return result.imdbID === imdbId;
+    })
+
+    this.setState(
+      {
+        dialogOpen: true,
+        dialogTitle: result[0].Title,
+        dialogCopy: result[0].Plot
+      }
+    );
+  }
+
   renderResults() {
     return (
       <CardScroller>
         {this.props.results.map((result) => {
-          return (
+            return (
             <Card
               show={{...result}}
               key={result.imdbID}
-              handleClick={(selectedShowId) => {this.handleCardClick(selectedShowId)}}
+              handleClick={(result) => {this.selectCard(result)}}
             />
           )
         })}
@@ -52,6 +81,12 @@ class Search extends Component {
     return (
       <div>
         <Title text={'Something2Watch'} header={true}/>
+        <Dialog
+          open={this.state.dialogOpen}
+          closeHandler={() => {this.dialogClose()}}
+          title={this.state.dialogTitle}
+          plot={this.state.dialogCopy}
+        />
         {this.props.results ? this.renderResults() : this.renderSpinner()}
       </div>
     );
