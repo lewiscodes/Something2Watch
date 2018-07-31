@@ -58,6 +58,9 @@ class Search extends Component {
     return (
       <CardScroller>
         {this.props.results.map((result) => {
+          if (result.imdbID === this.props.baseShow.baseShowImdbId) {
+            return null;
+          }
             return (
             <Card
               searchType={this.props.meta.searchType}
