@@ -6,6 +6,11 @@ export const RECEIVED_SELECTED_BASE_SHOW_GENRES = "RECEIVED_SELECTED_BASE_SHOW_G
 export const RECEIVED_INITIAL_RESULTS = "RECEIVED_INITIAL_RESULTS";
 export const RECEIVED_RESULTS_IMDB_IDS = "RECEIVED_RESULTS_IMDB_IDS";
 export const RECEIVED_FULL_RESULTS = "RECEIVED_FULL_RESULTS";
+export const RESET_RESULTS = "RESET_RESULTS";
+
+export function resetResults() {
+  return {type: RESET_RESULTS};
+}
 
 export function getResults(meta, baseShow) {
   return dispatch => {

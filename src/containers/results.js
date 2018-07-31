@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { withRouter } from 'react-router';
 
-import { getResults } from '../actions/results';
+import { getResults, resetResults } from '../actions/results';
 
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Title from '../components/title';
@@ -25,6 +25,7 @@ class Search extends Component {
   }
 
   componentDidMount() {
+    this.props.resetResults();
     this.redirectIfNeeded();
     this.props.getResults(this.props.meta, this.props.baseShow);
   };
@@ -95,7 +96,7 @@ class Search extends Component {
 };
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ getResults }, dispatch);
+  return bindActionCreators({ getResults, resetResults }, dispatch);
 };
 
 function mapStateToProps(state) {

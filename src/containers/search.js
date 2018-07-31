@@ -15,6 +15,10 @@ class Search extends Component {
     super(props);
     this.state = { searchString: '' };
   };
+
+  componentWillMount() {
+    this.props.resetSearch();
+  }
   
   componentDidMount() {
     this.redirectIfNeeded()

@@ -1,5 +1,5 @@
 import { compare } from '../helpers';
-import { RECEIVED_INITIAL_RESULTS, RECEIVED_RESULTS_IMDB_IDS, RECEIVED_FULL_RESULTS } from '../actions/results';
+import { RECEIVED_INITIAL_RESULTS, RECEIVED_RESULTS_IMDB_IDS, RECEIVED_FULL_RESULTS, RESET_RESULTS } from '../actions/results';
 
 const INITIAL_STATE = { basicResults: null , basicResultsImdbIds: null, fullResults: null};
 
@@ -15,6 +15,8 @@ export default function(state = INITIAL_STATE, action) {
       return {...state, basicResultsImdbIds: action.payload};
     case RECEIVED_FULL_RESULTS:
       return {...state, fullResults: action.payload.sort(compare)};
+    case RESET_RESULTS:
+      return {...state, basicResults: INITIAL_STATE.basicResults, basicResultsImdbIds: INITIAL_STATE.basicResultsImdbIds, fullResults: INITIAL_STATE.fullResults};
     default:
       return state;
   }
