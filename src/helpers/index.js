@@ -23,7 +23,10 @@ export function getResultIDs (resultIds) {
 }
 
 export function compare(a, b) {
-  if (isNaN(parseInt(a.imdbVotes, 10))) {a.imdbVotes = 0};
-  if (isNaN(parseInt(b.imdbVotes, 10))) {b.imdbVotes = 0};
-  return parseInt(a.imdbVotes, 10) > parseInt(b.imdbVotes, 10) ? -1 : 1;
+  let aVotes = a.imdbVotes.replace(/,/g , '');
+  let bVotes = b.imdbVotes.replace(/,/g , '');
+
+  if (isNaN(parseInt(aVotes, 10))) {aVotes = 0};
+  if (isNaN(parseInt(bVotes, 10))) {bVotes = 0};
+  return parseInt(aVotes, 10) > parseInt(bVotes, 10) ? -1 : 1;
 }
