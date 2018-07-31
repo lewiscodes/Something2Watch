@@ -1,5 +1,6 @@
 const styles = {
   card: {
+    cursor: 'pointer',
     background: '#FAFAFA',
     width: '75%',
     padding: '0px 10px',
