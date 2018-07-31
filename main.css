@@ -1,0 +1,28 @@
+@font-face {
+  font-family: FalseNine;
+  src: url("./FalseNine.otf") format("opentype");
+}
+
+* {
+  font-family: 'Muli';
+}
+
+.falseNineFont {
+  font-family: 'FalseNine';
+}
+
+body {
+  background: #F5F5F5;
+}
+
+h1 {
+
+}
+
+h2 {
+
+}
+
+h3 {
+  /* font-size: 20px; */
+}
