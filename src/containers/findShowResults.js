@@ -20,6 +20,7 @@ class FindShowResults extends Component {
         {this.props.resultsExtra.map((result) => {
           return (
             <Card
+              searchType={this.props.searchType}
               show={{...result}}
               key={result.imdbID}
               handleClick={(selectedShowId) => {this.handleCardClick(selectedShowId)}}
@@ -46,7 +47,7 @@ function mapDispatchToProps(dispatch) {
 };
 
 function mapStateToProps(state) {
-  return { results: state.baseShow.searchResults, resultsExtra: state.baseShow.searchResultsExtra };
+  return { results: state.baseShow.searchResults, resultsExtra: state.baseShow.searchResultsExtra, searchType: state.meta.searchType };
 };
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(FindShowResults));

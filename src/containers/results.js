@@ -59,6 +59,7 @@ class Search extends Component {
         {this.props.results.map((result) => {
             return (
             <Card
+              searchType={this.props.meta.searchType}
               show={{...result}}
               key={result.imdbID}
               handleClick={(result) => {this.selectCard(result)}}

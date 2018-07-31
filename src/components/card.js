@@ -4,13 +4,19 @@ import LinesEllipsis from 'react-lines-ellipsis';
 import styles from '../styles/card';
 
 export default Radium((props) => {
-  let year = props.show.Year;
 
-  if (year.length > 5) {
-    year = `(${year})`;
-  } else {
-    year = `(${year}present)`;
-  };
+  let year = props.show.Year;
+  let seasons = null;
+
+  if (props.searchType === 'Tv') {
+    seasons = `Seasons: ${props.show.totalSeasons}`;
+
+    if (year.length > 5) {
+      year = `(${year})`;
+    } else {
+      year = `(${year}present)`;
+    };
+  }
   
   return (
     <div style={styles.card} id={`card_${props.show.imdbID}`} onClick={() => {props.handleClick(props.show.imdbID)}} >
@@ -23,7 +29,7 @@ export default Radium((props) => {
       <div style={styles.extraInfo}>
         <LinesEllipsis text={`Cast: ${props.show.Actors}`} maxLine={2} style={styles.actors} />
         <LinesEllipsis text={`Genre: ${props.show.Genre}`} maxLine={2} style={styles.genre} />
-        <div>{`Seasons: ${props.show.totalSeasons}`}</div>
+        <div>{seasons}</div>
       </div>
     </div>
   );
