@@ -7,6 +7,7 @@ import { setBaseShow } from '../actions/baseShow';
 
 import Card from '../components/card';
 import CardScroller from '../components/cardScroller';
+import Title from '../components/title';
 
 class FindShowResults extends Component {
   handleCardClick(selectedShowId) {
@@ -31,10 +32,18 @@ class FindShowResults extends Component {
     );
   };
 
+  renderHeader() {
+    const searchType  = this.props.searchType === 'Tv' ? 'tv show' : 'film';
+    return <Title text={`Select the ${searchType} you enjoyed from the cards below.`} />
+  }
+
   render() {
     if (this.props.results.Response === 'True') {
       return (
-        this.renderResults()
+        <div>
+          {this.renderHeader()}
+          {this.renderResults()}
+        </div>
       );
     };
 

@@ -13,8 +13,14 @@ const styles = {
       '@media (min-width: 1025px)': {}
     },
     standard: {
-      color: '#e50914',
-      fontSize: '25px'
+      color: '#616161',
+      fontSize: '16px',
+      maxWidth: '80%',
+      margin: '1em auto',
+      '@media (min-width: 641px)' : {
+        maxWidth: '100%',
+        margin: '1em 1em'
+      }
     },
     link: {
 

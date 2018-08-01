@@ -54,23 +54,31 @@ class Search extends Component {
     );
   }
 
+  renderHeader() {
+    const searchType  = this.props.meta.searchType === 'Tv' ? 'tv show' : 'film';
+    return <Title text={`Here are some suggestions based on the ${searchType} you said you enjoyed. Select a card to see some more information.`} />
+  }
+
   renderResults() {
     return (
-      <CardScroller>
-        {this.props.results.map((result) => {
-          if (result.imdbID === this.props.baseShow.baseShowImdbId) {
-            return null;
-          }
-            return (
-            <Card
-              searchType={this.props.meta.searchType}
-              show={{...result}}
-              key={result.imdbID}
-              handleClick={(result) => {this.selectCard(result)}}
-            />
-          )
-        })}
-      </CardScroller>
+      <div>
+        {this.renderHeader()}
+        <CardScroller>
+          {this.props.results.map((result) => {
+            if (result.imdbID === this.props.baseShow.baseShowImdbId) {
+              return null;
+            }
+              return (
+              <Card
+                searchType={this.props.meta.searchType}
+                show={{...result}}
+                key={result.imdbID}
+                handleClick={(result) => {this.selectCard(result)}}
+              />
+            )
+          })}
+        </CardScroller>
+      </div>
     );
   };
 

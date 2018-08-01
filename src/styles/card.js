@@ -4,7 +4,7 @@ const styles = {
     background: '#FAFAFA',
     width: '75%',
     padding: '0px 10px',
-    margin: '15px 0 15px 15px',
+    margin: '0 0 15px 15px',
     flex: '0 0 auto',
     boxShadow: '0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22)',
     '@media (min-width: 641px)' : {

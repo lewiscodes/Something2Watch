@@ -54,7 +54,7 @@ class Search extends Component {
 
   render() {
     const searchType = this.props.searchType === 'Film' ? 'Film' : 'Tv Show';
-    const placeholder = this.props.results.Response === 'False' ? 'No results found.' : `Search for a ${searchType} you have seen.`;
+    const placeholder = this.props.results.Response === 'False' ? 'No results found.' : `Search for a ${searchType} you have enjoyed.`;
 
     return (
       <div>
